@@ -34,8 +34,14 @@ class App extends Component {
 
   fetchSearchTopstories(searchTerm){
     fetch(`${PATH_BASE}${PATH_SEARCH}?${PARAM_SEARCH}${searchTerm}`)
-      .then(response => response.json())
-      .then(result => this.setSearchTopstories(result));
+      .then((response) => {
+        if(response.ok){
+          return response.json();
+        }
+        throw new Error('Network response was not ok.');
+      })
+      .then(result => this.setSearchTopstories(result))
+      .catch(error => console.log('Network error', error));
   }
 
   componentDidMount(){
