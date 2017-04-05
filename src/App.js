@@ -51,11 +51,12 @@ class App extends Component {
 
   onDismiss(id){
 
-    const updatedList = this.state.list.filter((item) => {
-      return item.objectID !== id;
-    });
+    const isNotId = item => item.objectID !== id;
+    const updatedHits = this.state.result.hits.filter(isNotId);
 
-    this.setState({ list: updatedList});
+    this.setState({
+      result: { ...this.state.result, hits: updatedHits}
+    });
   }
 
   onSearchChange(event){
@@ -63,8 +64,6 @@ class App extends Component {
   }
 
   render() {
-
-
 
     const { searchTerm, result } = this.state;
 
