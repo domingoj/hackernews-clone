@@ -137,14 +137,32 @@ class App extends Component {
     }
 }
 
-const Search = ({value, onChange, onSubmit, children}) =>
+class Search extends Component {
 
-  <form onSubmit={onSubmit}>
-    <input type="text" value={value} onChange={onChange}/>
-    <button type="submit">
-        {children}
-    </button>
-  </form>
+  render(){
+
+    const {value, onChange, onSubmit, children} = this.props;
+
+    let input;
+
+    return (
+      <form onSubmit={onSubmit}>
+        <input
+          type="text"
+          value={value}
+          onChange={onChange}
+        ref={(node) => {this.input = node; }}/>
+        <button type="submit">
+            {children}
+        </button>
+      </form>
+    );
+  }
+
+  componentDidMount() {
+    this.input.focus();
+  }
+}
 
 Search.propTypes = {
     value: PropTypes.string.isRequired,
