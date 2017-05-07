@@ -128,7 +128,7 @@ class App extends Component {
                 <Table list={list} onDismiss={this.onDismiss}/>
 
                 <div className="interactions">
-                    <Button onClick= {() => this.fetchSearchTopstories(searchKey, page + 1)}>
+                    <Button onClick={() => this.fetchSearchTopstories(searchKey, page + 1)}>
                         More
                     </Button>
                 </div>
@@ -146,7 +146,7 @@ const Search = ({value, onChange, onSubmit, children}) =>
     </button>
   </form>
 
-Search.PropTypes = {
+Search.propTypes = {
     value: PropTypes.string.isRequired,
     onChange: PropTypes.func.isRequired,
     onSubmit: PropTypes.func.isRequired,
@@ -187,7 +187,7 @@ const Table = ({list, onDismiss}) =>
     </div>)}
 </div>
 
-Table.PropTypes = {
+Table.propTypes = {
     list: PropTypes.arrayOf(
       PropTypes.shape({
         objectID: PropTypes.string.isRequired,
@@ -198,13 +198,13 @@ Table.PropTypes = {
     onDismiss: PropTypes.func.isRequired
   }
 
-const Button = ({onClick, className, children}) =>
+const Button = ({ onClick, className, children}) =>
 
   <button onClick={onClick} className={className} type="button">
     {children}
   </button>
 
-Button.PropTypes = {
+Button.propTypes = {
     onClick: PropTypes.func.isRequired,
     className: PropTypes.string,
     children: PropTypes.node.isRequired
