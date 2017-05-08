@@ -33,6 +33,9 @@ describe('Search', () => {
     const component = renderer.create(
       <Search>Search</Search>
     );
+    component.input = renderer.create(
+      <input type="text"/>
+    );
     let tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
@@ -61,7 +64,9 @@ describe('Table', () => {
     list: [
       {title: '1', author: '1', num_comments: 1, points: 2, objectID: 'y'},
       {title: '2', author: '2', num_comments: 1, points: 2, objectID: 'z'},
-    ]
+    ],
+    sortKey: 'TITLE',
+    isSortReverse: false,
   }
 
   it('renders', () => {
