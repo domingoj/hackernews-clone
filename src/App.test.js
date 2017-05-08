@@ -19,7 +19,7 @@ describe('App', () => {
     let tree = component.toJSON();
     expect(tree).toMatchSnapshot();
 
-    })
+  });
 });
 
 describe('Search', () => {
